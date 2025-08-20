@@ -1,0 +1,25 @@
+{
+  "name": "scrds-websocket",
+  "version": "0.0.0",
+  "description": "Source Server websocket middleman",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Identityofsine/scrds-websocket.git"
+  },
+  "keywords": [
+    "srcds",
+    "valve",
+    "websocket",
+    "api"
+  ],
+  "author": "kerdogan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Identityofsine/scrds-websocket/issues"
+  },
+  "homepage": "https://github.com/Identityofsine/scrds-websocket#readme"
+}
