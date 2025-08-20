@@ -1135,3 +1135,20 @@ Time for 'build typescript dependencies' 0.014460000005783513
 [NX v21.4.0 Daemon Server] - 2025-08-20T21:04:32.591Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
 [NX v21.4.0 Daemon Server] - 2025-08-20T21:04:32.592Z - [SYNC]: scheduling: ["@nx/js:typescript-sync"]
 [NX v21.4.0 Daemon Server] - 2025-08-20T21:04:32.592Z - Time taken for 'total execution time for createProjectGraph()' 1.6292340000218246ms
+[NX v21.4.0 Daemon Server] - 2025-08-20T21:04:38.992Z - [SYNC]: running scheduled generator @nx/js:typescript-sync
+[NX v21.4.0 Daemon Server] - 2025-08-20T21:04:38.993Z - [REQUEST]: Client Request for Project Graph Received
+[NX v21.4.0 Daemon Server] - 2025-08-20T21:04:38.993Z - Reusing in-memory cached project graph because no files changed.
+[NX v21.4.0 Daemon Server] - 2025-08-20T21:04:38.993Z - [REQUEST]: Responding to the client. project-graph
+[NX v21.4.0 Daemon Server] - 2025-08-20T21:04:38.994Z - Done responding to the client project-graph
+[NX v21.4.0 Daemon Server] - 2025-08-20T21:04:38.994Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 1.
+[NX v21.4.0 Daemon Server] - 2025-08-20T21:04:38.994Z - Time taken for 'total for creating and serializing project graph' 0.3060090000217315ms
+[NX v21.4.0 Daemon Server] - 2025-08-20T21:04:38.994Z - [SYNC]: @nx/js:typescript-sync changes: 
+[NX v21.4.0 Daemon Server] - 2025-08-20T21:04:38.994Z - Time taken for 'run-sync-generator:@nx/js:typescript-sync' 2.067977999977302ms
+[NX v21.4.0 Daemon Server] - 2025-08-20T21:53:58.589Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.0 Daemon Server] - 2025-08-20T21:53:58.595Z - [WATCHER]: 0 file(s) created or restored, 0 file(s) modified, 2 file(s) deleted
+[NX v21.4.0 Daemon Server] - 2025-08-20T21:53:58.596Z - Closed a connection. Number of open connections: 2
+[NX v21.4.0 Daemon Server] - 2025-08-20T21:53:58.596Z - Closed a connection. Number of open connections: 1
+[NX v21.4.0 Daemon Server] - 2025-08-20T21:53:58.597Z - Closed a connection. Number of open connections: 0
+[NX v21.4.0 Daemon Server] - 2025-08-20T21:53:58.597Z - [WATCHER]: Stopping the watcher for /home/kevin/software/srcds-websocket-workspace (sources)
+[NX v21.4.0 Daemon Server] - 2025-08-20T21:53:58.598Z - [WATCHER]: Stopping the watcher for /home/kevin/software/srcds-websocket-workspace (outputs)
+[NX v21.4.0 Daemon Server] - 2025-08-20T21:53:58.599Z - Server stopped because: "Stopping the daemon the set of ignored files changed (native)"
