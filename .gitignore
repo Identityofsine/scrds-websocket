@@ -6,9 +6,10 @@ package-lock.json
 
 test-output
 
-./nx
-nx/
-*/nx/**
+
+./.nx
+.nx/
+*/.nx/**
 
 tmp/
 tmp
