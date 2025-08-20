@@ -18,7 +18,16 @@
             },
             "cache": true,
             "inputs": [
-              "production",
+              "{projectRoot}/package.json",
+              "{workspaceRoot}/tsconfig.base.json",
+              "{projectRoot}/tsconfig.json",
+              "{projectRoot}/tsconfig.lib.json",
+              "{projectRoot}/tsconfig.spec.json",
+              "{projectRoot}/src/**/*.ts",
+              "{projectRoot}/jest.config.ts",
+              "{projectRoot}/src/**/*.test.ts",
+              "{projectRoot}/src/**/*.spec.ts",
+              "{projectRoot}/src/**/*.d.ts",
               "^production",
               {
                 "externalDependencies": [
@@ -27,22 +36,11 @@
               }
             ],
             "outputs": [
-              "{projectRoot}/**/*.js",
-              "{projectRoot}/**/*.cjs",
-              "{projectRoot}/**/*.mjs",
-              "{projectRoot}/**/*.jsx",
-              "{projectRoot}/**/*.js.map",
-              "{projectRoot}/**/*.jsx.map",
-              "{projectRoot}/**/*.d.ts",
-              "{projectRoot}/**/*.d.cts",
-              "{projectRoot}/**/*.d.mts",
-              "{projectRoot}/**/*.d.ts.map",
-              "{projectRoot}/**/*.d.cts.map",
-              "{projectRoot}/**/*.d.mts.map",
-              "{projectRoot}/tsconfig.tsbuildinfo",
               "{projectRoot}/dist/**/*.d.ts",
+              "{projectRoot}/dist/**/*.d.ts.map",
               "{projectRoot}/dist/tsconfig.lib.tsbuildinfo",
               "{projectRoot}/out-tsc/jest/**/*.d.ts",
+              "{projectRoot}/out-tsc/jest/**/*.d.ts.map",
               "{projectRoot}/out-tsc/jest/tsconfig.tsbuildinfo"
             ],
             "syncGenerators": [
@@ -76,7 +74,13 @@
             },
             "cache": true,
             "inputs": [
-              "production",
+              "{projectRoot}/package.json",
+              "{workspaceRoot}/tsconfig.base.json",
+              "{projectRoot}/tsconfig.lib.json",
+              "{projectRoot}/src/**/*.ts",
+              "!{projectRoot}/jest.config.ts",
+              "!{projectRoot}/src/**/*.spec.ts",
+              "!{projectRoot}/src/**/*.test.ts",
               "^production",
               {
                 "externalDependencies": [
@@ -254,7 +258,16 @@
             },
             "cache": true,
             "inputs": [
-              "production",
+              "{projectRoot}/package.json",
+              "{workspaceRoot}/tsconfig.base.json",
+              "{projectRoot}/tsconfig.json",
+              "{projectRoot}/tsconfig.lib.json",
+              "{projectRoot}/tsconfig.spec.json",
+              "{projectRoot}/src/**/*.ts",
+              "{projectRoot}/jest.config.ts",
+              "{projectRoot}/src/**/*.test.ts",
+              "{projectRoot}/src/**/*.spec.ts",
+              "{projectRoot}/src/**/*.d.ts",
               "^production",
               {
                 "externalDependencies": [
@@ -263,22 +276,11 @@
               }
             ],
             "outputs": [
-              "{projectRoot}/**/*.js",
-              "{projectRoot}/**/*.cjs",
-              "{projectRoot}/**/*.mjs",
-              "{projectRoot}/**/*.jsx",
-              "{projectRoot}/**/*.js.map",
-              "{projectRoot}/**/*.jsx.map",
-              "{projectRoot}/**/*.d.ts",
-              "{projectRoot}/**/*.d.cts",
-              "{projectRoot}/**/*.d.mts",
-              "{projectRoot}/**/*.d.ts.map",
-              "{projectRoot}/**/*.d.cts.map",
-              "{projectRoot}/**/*.d.mts.map",
-              "{projectRoot}/tsconfig.tsbuildinfo",
               "{projectRoot}/dist/**/*.d.ts",
+              "{projectRoot}/dist/**/*.d.ts.map",
               "{projectRoot}/dist/tsconfig.lib.tsbuildinfo",
               "{projectRoot}/out-tsc/jest/**/*.d.ts",
+              "{projectRoot}/out-tsc/jest/**/*.d.ts.map",
               "{projectRoot}/out-tsc/jest/tsconfig.tsbuildinfo"
             ],
             "syncGenerators": [
@@ -312,7 +314,13 @@
             },
             "cache": true,
             "inputs": [
-              "production",
+              "{projectRoot}/package.json",
+              "{workspaceRoot}/tsconfig.base.json",
+              "{projectRoot}/tsconfig.lib.json",
+              "{projectRoot}/src/**/*.ts",
+              "!{projectRoot}/jest.config.ts",
+              "!{projectRoot}/src/**/*.spec.ts",
+              "!{projectRoot}/src/**/*.test.ts",
               "^production",
               {
                 "externalDependencies": [
@@ -471,14 +479,231 @@
         },
         "implicitDependencies": []
       }
+    },
+    "@srcds-socket/app": {
+      "name": "@srcds-socket/app",
+      "type": "lib",
+      "data": {
+        "root": "app",
+        "projectType": "library",
+        "targets": {
+          "typecheck": {
+            "dependsOn": [
+              "^typecheck"
+            ],
+            "options": {
+              "cwd": "app",
+              "command": "tsc --build --emitDeclarationOnly"
+            },
+            "cache": true,
+            "inputs": [
+              "{projectRoot}/package.json",
+              "{workspaceRoot}/tsconfig.base.json",
+              "{projectRoot}/tsconfig.json",
+              "{projectRoot}/tsconfig.app.json",
+              "{projectRoot}/src/**/*.ts",
+              "^production",
+              {
+                "externalDependencies": [
+                  "typescript"
+                ]
+              }
+            ],
+            "outputs": [
+              "{projectRoot}/dist/**/*.d.ts",
+              "{projectRoot}/dist/**/*.d.ts.map",
+              "{projectRoot}/dist/tsconfig.app.tsbuildinfo"
+            ],
+            "syncGenerators": [
+              "@nx/js:typescript-sync"
+            ],
+            "metadata": {
+              "technologies": [
+                "typescript"
+              ],
+              "description": "Runs type-checking for the project.",
+              "help": {
+                "command": "npx tsc --build --help",
+                "example": {
+                  "args": [
+                    "--force"
+                  ]
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "lint": {
+            "cache": true,
+            "options": {
+              "cwd": "app",
+              "command": "eslint ."
+            },
+            "inputs": [
+              "default",
+              "^default",
+              "{workspaceRoot}/eslint.config.mjs",
+              "{workspaceRoot}/tools/eslint-rules/**/*",
+              {
+                "externalDependencies": [
+                  "eslint"
+                ]
+              }
+            ],
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "metadata": {
+              "technologies": [
+                "eslint"
+              ],
+              "description": "Runs ESLint on project",
+              "help": {
+                "command": "npx eslint --help",
+                "example": {
+                  "options": {
+                    "max-warnings": 0
+                  }
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "build": {
+            "executor": "@nx/esbuild:esbuild",
+            "outputs": [
+              "{options.outputPath}"
+            ],
+            "defaultConfiguration": "production",
+            "options": {
+              "platform": "node",
+              "outputPath": "app/dist",
+              "format": [
+                "cjs"
+              ],
+              "bundle": false,
+              "main": "app/src/main.ts",
+              "tsConfig": "app/tsconfig.app.json",
+              "assets": [
+                "app/src/assets"
+              ],
+              "esbuildOptions": {
+                "sourcemap": true,
+                "outExtension": {
+                  ".js": ".js"
+                }
+              }
+            },
+            "configurations": {
+              "development": {},
+              "production": {
+                "esbuildOptions": {
+                  "sourcemap": false,
+                  "outExtension": {
+                    ".js": ".js"
+                  }
+                }
+              }
+            },
+            "parallelism": true,
+            "cache": true,
+            "dependsOn": [
+              "^build"
+            ],
+            "inputs": [
+              "production",
+              "^production"
+            ]
+          },
+          "prune-lockfile": {
+            "dependsOn": [
+              "build"
+            ],
+            "cache": true,
+            "executor": "@nx/js:prune-lockfile",
+            "outputs": [
+              "{workspaceRoot}/app/dist/package.json",
+              "{workspaceRoot}/app/dist/package-lock.json"
+            ],
+            "options": {
+              "buildTarget": "build"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "copy-workspace-modules": {
+            "dependsOn": [
+              "build"
+            ],
+            "cache": true,
+            "outputs": [
+              "{workspaceRoot}/app/dist/workspace_modules"
+            ],
+            "executor": "@nx/js:copy-workspace-modules",
+            "options": {
+              "buildTarget": "build"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "prune": {
+            "dependsOn": [
+              "prune-lockfile",
+              "copy-workspace-modules"
+            ],
+            "executor": "nx:noop",
+            "configurations": {},
+            "options": {},
+            "parallelism": true
+          },
+          "serve": {
+            "continuous": true,
+            "executor": "@nx/js:node",
+            "defaultConfiguration": "development",
+            "dependsOn": [
+              "build"
+            ],
+            "options": {
+              "buildTarget": "@srcds-socket/app:build",
+              "runBuildTargetDependencies": false
+            },
+            "configurations": {
+              "development": {
+                "buildTarget": "@srcds-socket/app:build:development"
+              },
+              "production": {
+                "buildTarget": "@srcds-socket/app:build:production"
+              }
+            },
+            "parallelism": true
+          }
+        },
+        "name": "@srcds-socket/app",
+        "tags": [
+          "npm:private"
+        ],
+        "metadata": {
+          "targetGroups": {},
+          "js": {
+            "packageName": "@srcds-socket/app",
+            "isInPackageManagerWorkspaces": true
+          }
+        },
+        "implicitDependencies": []
+      }
     }
   },
   "externalNodes": {},
   "dependencies": {
     "@shared/packets": [],
-    "@shared/utils": []
+    "@shared/utils": [],
+    "@srcds-socket/app": []
   },
   "version": "6.0",
   "errors": [],
-  "computedAt": 1755723872590
+  "computedAt": 1755727734083
 }

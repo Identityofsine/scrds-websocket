@@ -8,6 +8,9 @@
     },
     {
       "path": "./packages/@shared/utils"
+    },
+    {
+      "path": "./app"
     }
   ]
 }

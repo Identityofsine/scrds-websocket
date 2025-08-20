@@ -1,0 +1,21 @@
+{
+  "run": {
+    "command": "nx run app:serve",
+    "startTime": "2025-08-20T22:08:51.180Z",
+    "endTime": "2025-08-20T22:09:01.625Z",
+    "inner": false
+  },
+  "tasks": [
+    {
+      "taskId": "@srcds-socket/app:build:production",
+      "target": "build",
+      "projectName": "@srcds-socket/app",
+      "hash": "16571344152119255842",
+      "startTime": "2025-08-20T22:08:51.227Z",
+      "endTime": "2025-08-20T22:08:52.498Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 0
+    }
+  ]
+}

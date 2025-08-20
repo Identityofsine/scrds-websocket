@@ -4,19 +4,21 @@
   "license": "MIT",
   "scripts": {},
   "private": true,
-  "dependencies": {},
   "devDependencies": {
     "@eslint/js": "^9.8.0",
+    "@nx/esbuild": "21.4.0",
     "@nx/eslint": "21.4.0",
     "@nx/eslint-plugin": "21.4.0",
     "@nx/jest": "21.4.0",
     "@nx/js": "21.4.0",
+    "@nx/node": "^21.4.0",
     "@swc-node/register": "~1.9.1",
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
     "@swc/jest": "~0.2.38",
     "@types/jest": "^30.0.0",
     "@types/node": "18.16.9",
+    "esbuild": "^0.19.2",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^10.0.0",
     "jest": "^30.0.2",
@@ -33,6 +35,8 @@
   },
   "workspaces": [
     "packages/*",
-    "packages/@shared/*"
-  ]
+    "packages/@shared/*",
+    "app"
+  ],
+  "dependencies": {}
 }

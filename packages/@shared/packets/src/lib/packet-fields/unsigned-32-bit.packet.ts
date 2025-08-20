@@ -1,4 +1,4 @@
-import { AbstractPacketField } from "../abstract-packet-field";
+import { AbstractPacketField } from "../abstract-packet-field.js";
 
 export class Unsigned32BitPacketField extends AbstractPacketField {
 

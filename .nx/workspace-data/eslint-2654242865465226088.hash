@@ -1,5 +1,5 @@
 {
-  "3432939015568985533": {
+  "285981735179177960": {
     "packages/@shared/packets": {
       "targets": {
         "lint": {
@@ -41,8 +41,7 @@
       }
     }
   },
-  "15286743729672314157": {},
-  "7343118689916164372": {
+  "817940417118346380": {
     "packages/@shared/utils": {
       "targets": {
         "lint": {
@@ -84,21 +83,20 @@
       }
     }
   },
-  "13228784857510549494": {},
-  "15500920283904450546": {
-    "packages/@shared/utils": {
+  "16623625218351909828": {},
+  "20258721508797800": {
+    "app": {
       "targets": {
         "lint": {
           "command": "eslint .",
           "cache": true,
           "options": {
-            "cwd": "packages/@shared/utils"
+            "cwd": "app"
           },
           "inputs": [
             "default",
             "^default",
             "{workspaceRoot}/eslint.config.mjs",
-            "{workspaceRoot}/packages/@shared/utils/eslint.config.mjs",
             "{workspaceRoot}/tools/eslint-rules/**/*",
             {
               "externalDependencies": [
@@ -127,21 +125,20 @@
       }
     }
   },
-  "4746797335071989778": {},
-  "13575555786377703102": {
-    "packages/@shared/utils": {
+  "3106942439039786612": {},
+  "15438984941725190127": {
+    "app": {
       "targets": {
         "lint": {
           "command": "eslint .",
           "cache": true,
           "options": {
-            "cwd": "packages/@shared/utils"
+            "cwd": "app"
           },
           "inputs": [
             "default",
             "^default",
             "{workspaceRoot}/eslint.config.mjs",
-            "{workspaceRoot}/packages/@shared/utils/eslint.config.mjs",
             "{workspaceRoot}/tools/eslint-rules/**/*",
             {
               "externalDependencies": [
@@ -170,21 +167,20 @@
       }
     }
   },
-  "6085200935285347213": {},
-  "33536449114564572": {
-    "packages/@shared/utils": {
+  "9049585838788753476": {},
+  "4901032306450837910": {
+    "app": {
       "targets": {
         "lint": {
           "command": "eslint .",
           "cache": true,
           "options": {
-            "cwd": "packages/@shared/utils"
+            "cwd": "app"
           },
           "inputs": [
             "default",
             "^default",
             "{workspaceRoot}/eslint.config.mjs",
-            "{workspaceRoot}/packages/@shared/utils/eslint.config.mjs",
             "{workspaceRoot}/tools/eslint-rules/**/*",
             {
               "externalDependencies": [
@@ -213,21 +209,20 @@
       }
     }
   },
-  "9014515205173481245": {},
-  "11436739942982573015": {
-    "packages/@shared/utils": {
+  "6271607834082227671": {},
+  "6337303701480806101": {
+    "app": {
       "targets": {
         "lint": {
           "command": "eslint .",
           "cache": true,
           "options": {
-            "cwd": "packages/@shared/utils"
+            "cwd": "app"
           },
           "inputs": [
             "default",
             "^default",
             "{workspaceRoot}/eslint.config.mjs",
-            "{workspaceRoot}/packages/@shared/utils/eslint.config.mjs",
             "{workspaceRoot}/tools/eslint-rules/**/*",
             {
               "externalDependencies": [
@@ -255,222 +250,5 @@
         }
       }
     }
-  },
-  "14263608395749607266": {},
-  "1959333005442131302": {
-    "packages/@shared/utils": {
-      "targets": {
-        "lint": {
-          "command": "eslint .",
-          "cache": true,
-          "options": {
-            "cwd": "packages/@shared/utils"
-          },
-          "inputs": [
-            "default",
-            "^default",
-            "{workspaceRoot}/eslint.config.mjs",
-            "{workspaceRoot}/packages/@shared/utils/eslint.config.mjs",
-            "{workspaceRoot}/tools/eslint-rules/**/*",
-            {
-              "externalDependencies": [
-                "eslint"
-              ]
-            }
-          ],
-          "outputs": [
-            "{options.outputFile}"
-          ],
-          "metadata": {
-            "technologies": [
-              "eslint"
-            ],
-            "description": "Runs ESLint on project",
-            "help": {
-              "command": "npx eslint --help",
-              "example": {
-                "options": {
-                  "max-warnings": 0
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "17150164409396830101": {},
-  "12662684302509393027": {
-    "packages/@shared/packets": {
-      "targets": {
-        "lint": {
-          "command": "eslint .",
-          "cache": true,
-          "options": {
-            "cwd": "packages/@shared/packets"
-          },
-          "inputs": [
-            "default",
-            "^default",
-            "{workspaceRoot}/eslint.config.mjs",
-            "{workspaceRoot}/packages/@shared/packets/eslint.config.mjs",
-            "{workspaceRoot}/tools/eslint-rules/**/*",
-            {
-              "externalDependencies": [
-                "eslint"
-              ]
-            }
-          ],
-          "outputs": [
-            "{options.outputFile}"
-          ],
-          "metadata": {
-            "technologies": [
-              "eslint"
-            ],
-            "description": "Runs ESLint on project",
-            "help": {
-              "command": "npx eslint --help",
-              "example": {
-                "options": {
-                  "max-warnings": 0
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "5330712980166007018": {},
-  "12237016794849787116": {
-    "packages/@shared/packets": {
-      "targets": {
-        "lint": {
-          "command": "eslint .",
-          "cache": true,
-          "options": {
-            "cwd": "packages/@shared/packets"
-          },
-          "inputs": [
-            "default",
-            "^default",
-            "{workspaceRoot}/eslint.config.mjs",
-            "{workspaceRoot}/packages/@shared/packets/eslint.config.mjs",
-            "{workspaceRoot}/tools/eslint-rules/**/*",
-            {
-              "externalDependencies": [
-                "eslint"
-              ]
-            }
-          ],
-          "outputs": [
-            "{options.outputFile}"
-          ],
-          "metadata": {
-            "technologies": [
-              "eslint"
-            ],
-            "description": "Runs ESLint on project",
-            "help": {
-              "command": "npx eslint --help",
-              "example": {
-                "options": {
-                  "max-warnings": 0
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "2262795676687417930": {},
-  "1703038798770625111": {
-    "packages/@shared/packets": {
-      "targets": {
-        "lint": {
-          "command": "eslint .",
-          "cache": true,
-          "options": {
-            "cwd": "packages/@shared/packets"
-          },
-          "inputs": [
-            "default",
-            "^default",
-            "{workspaceRoot}/eslint.config.mjs",
-            "{workspaceRoot}/packages/@shared/packets/eslint.config.mjs",
-            "{workspaceRoot}/tools/eslint-rules/**/*",
-            {
-              "externalDependencies": [
-                "eslint"
-              ]
-            }
-          ],
-          "outputs": [
-            "{options.outputFile}"
-          ],
-          "metadata": {
-            "technologies": [
-              "eslint"
-            ],
-            "description": "Runs ESLint on project",
-            "help": {
-              "command": "npx eslint --help",
-              "example": {
-                "options": {
-                  "max-warnings": 0
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "6457590174720300274": {},
-  "16108925283052432779": {
-    "packages/@shared/packets": {
-      "targets": {
-        "lint": {
-          "command": "eslint .",
-          "cache": true,
-          "options": {
-            "cwd": "packages/@shared/packets"
-          },
-          "inputs": [
-            "default",
-            "^default",
-            "{workspaceRoot}/eslint.config.mjs",
-            "{workspaceRoot}/packages/@shared/packets/eslint.config.mjs",
-            "{workspaceRoot}/tools/eslint-rules/**/*",
-            {
-              "externalDependencies": [
-                "eslint"
-              ]
-            }
-          ],
-          "outputs": [
-            "{options.outputFile}"
-          ],
-          "metadata": {
-            "technologies": [
-              "eslint"
-            ],
-            "description": "Runs ESLint on project",
-            "help": {
-              "command": "npx eslint --help",
-              "example": {
-                "options": {
-                  "max-warnings": 0
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "12568827995769375924": {},
-  "2835892654439765075": {}
+  }
 }
