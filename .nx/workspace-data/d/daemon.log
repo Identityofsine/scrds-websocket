@@ -290,3 +290,11 @@ Time for 'build typescript dependencies' 0.689607000000251
 [NX v21.4.0 Daemon Server] - 2025-08-20T22:09:02.101Z - Handled POST_TASKS_EXECUTION. Handling time: 1. Response time: 0.
 [NX v21.4.0 Daemon Server] - 2025-08-20T22:09:02.101Z - Time taken for 'postTasksExecution' 0.21286400000099093ms
 [NX v21.4.0 Daemon Server] - 2025-08-20T22:09:02.112Z - Closed a connection. Number of open connections: 3
+[NX v21.4.0 Daemon Server] - 2025-08-20T22:09:23.744Z - [WATCHER]: app/.gitignore was created or restored
+[NX v21.4.0 Daemon Server] - 2025-08-20T22:09:23.745Z - [WATCHER]: Processing file changes in outputs
+[NX v21.4.0 Daemon Server] - 2025-08-20T22:09:23.745Z - Closed a connection. Number of open connections: 2
+[NX v21.4.0 Daemon Server] - 2025-08-20T22:09:23.746Z - Closed a connection. Number of open connections: 1
+[NX v21.4.0 Daemon Server] - 2025-08-20T22:09:23.746Z - Closed a connection. Number of open connections: 0
+[NX v21.4.0 Daemon Server] - 2025-08-20T22:09:23.746Z - [WATCHER]: Stopping the watcher for /home/kevin/software/srcds-websocket-workspace (sources)
+[NX v21.4.0 Daemon Server] - 2025-08-20T22:09:23.747Z - [WATCHER]: Stopping the watcher for /home/kevin/software/srcds-websocket-workspace (outputs)
+[NX v21.4.0 Daemon Server] - 2025-08-20T22:09:23.764Z - Server stopped because: "Stopping the daemon the set of ignored files changed (native)"
