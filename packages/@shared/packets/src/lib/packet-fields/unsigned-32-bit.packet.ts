@@ -1,4 +1,4 @@
-import { AbstractPacketField } from "../abstract-packet-field.js";
+import { AbstractPacketField } from "./abstract-packet-field.js";
 
 export class Unsigned32BitPacketField extends AbstractPacketField {
 
@@ -13,6 +13,8 @@ export class Unsigned32BitPacketField extends AbstractPacketField {
 
   public toBytes(): ArrayBuffer {
     const buffer = new ArrayBuffer(4);
+    const view = new DataView(buffer);
+    view.setUint32(0, this.value as number, this.packetOrder === 'little-endian');
     return buffer;
   }
 

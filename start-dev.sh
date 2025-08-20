@@ -1,4 +1,5 @@
 
-echo "Starting development environment..."
+echo "Starting development environment with hot reloading..."
 
-nx run app:serve
+# Enable hot reloading with dependency watching and development configuration
+nx run app:serve:development --watch --verbose

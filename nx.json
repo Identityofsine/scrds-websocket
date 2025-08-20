@@ -44,11 +44,14 @@
       "options": {
         "typecheck": {
           "targetName": "typecheck"
+        },
+        "build": {
+          "targetName": "build",
+          "configName": "tsconfig.lib.json",
+          "buildDepsName": "build-deps",
+          "watchDepsName": "watch-deps"
         }
-      },
-      "exclude": [
-        "packages/@shared/packets/*"
-      ]
+      }
     },
     {
       "plugin": "@nx/eslint/plugin",
@@ -78,6 +81,11 @@
         "production",
         "^production"
       ]
+    }
+  },
+  "generators": {
+    "@srcds-socket/source:shared-lib": {
+      "schema": "./tools/generators/shared-lib/schema.json"
     }
   }
 }

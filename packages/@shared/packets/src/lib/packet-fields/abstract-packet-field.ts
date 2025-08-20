@@ -2,23 +2,30 @@
 // This is used for parsing within this program and should not be send directly over the network
 // without passing through the Packet class.
 
-import { PacketDataOrder, PacketDataType } from "../lib/packet.interface.js";
+import { PacketDataOrder, PacketDataType } from "../packet.interface.js";
 
-type Constructor<T, R extends T = T> = new (...args: any[]) => R;
+export type Constructor<T, R extends T = T> = new (...args: any[]) => R;
 
 export abstract class AbstractPacketField {
 
   public readonly packetType: PacketDataType = 'uint32';
   public readonly packetOrder: PacketDataOrder = 'little-endian'
   public readonly packetSize: number = 0;
-  private readonly _constructor: Constructor<AbstractPacketField>;
+  //@ts-expect-error - This is a workaround to allow the constructor to be used in the map function
+  private readonly _constructor: Constructor<AbstractPacketField> = AbstractPacketField;
 
-  constructor(packetType: PacketDataType, packetOrder: PacketDataOrder, packetSize: number, protected readonly value: number | string = 0, constructor: Constructor<AbstractPacketField>) {
+  constructor(
+    packetType: PacketDataType,
+    packetOrder: PacketDataOrder,
+    packetSize: number,
+    protected readonly value: number | string = 0,
+    _constructor: Constructor<AbstractPacketField>
+  ) {
     this.packetType = packetType;
     this.packetOrder = packetOrder;
     this.packetSize = packetSize;
     this.value = value;
-    this._constructor = constructor;
+    this._constructor = _constructor;
   }
 
   /**

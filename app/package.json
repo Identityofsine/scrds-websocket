@@ -10,6 +10,9 @@
           "{options.outputPath}"
         ],
         "defaultConfiguration": "production",
+        "dependsOn": [
+          "^build"
+        ],
         "options": {
           "platform": "node",
           "outputPath": "app/dist",
@@ -84,7 +87,7 @@
         ],
         "options": {
           "buildTarget": "@srcds-socket/app:build",
-          "runBuildTargetDependencies": false
+          "runBuildTargetDependencies": true
         },
         "configurations": {
           "development": {
@@ -97,5 +100,9 @@
       }
     }
   },
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "@shared/packets": "*",
+    "@shared/utils": "*"
+  }
 }

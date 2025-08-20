@@ -1,0 +1,35 @@
+{
+  "name": "@shared/packets",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/@shared/packets/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+              "options": {
+          "outputPath": "dist/packages/@shared/packets",
+          "main": "packages/@shared/packets/src/index.ts",
+          "tsConfig": "packages/@shared/packets/tsconfig.lib.json"
+        }
+    },
+    "typecheck": {
+      "executor": "@nx/js:tsc",
+      "options": {
+        "tsConfig": "packages/@shared/packets/tsconfig.lib.json",
+        "noEmit": true
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/@shared/packets/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+} 

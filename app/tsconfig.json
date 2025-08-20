@@ -4,6 +4,9 @@
   "include": [],
   "references": [
     {
+      "path": "../packages/@shared/packets"
+    },
+    {
       "path": "./tsconfig.app.json"
     }
   ]
