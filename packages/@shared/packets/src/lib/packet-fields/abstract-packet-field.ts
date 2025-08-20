@@ -18,7 +18,7 @@ export abstract class AbstractPacketField {
     packetType: PacketDataType,
     packetOrder: PacketDataOrder,
     packetSize: number,
-    protected readonly value: number | string = 0,
+    protected value: number | string = 0,
     _constructor: Constructor<AbstractPacketField>
   ) {
     this.packetType = packetType;

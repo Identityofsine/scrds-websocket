@@ -34,7 +34,10 @@
     "typescript-eslint": "^8.29.0"
   },
   "workspaces": [
-    "app", 
+    "app",
     "packages/*/*"
-  ]
+  ],
+  "dependencies": {
+    "rxjs": "^7.8.2"
+  }
 }
