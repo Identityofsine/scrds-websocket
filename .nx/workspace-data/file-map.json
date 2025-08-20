@@ -1,0 +1,171 @@
+{
+  "version": "6.0",
+  "nxVersion": "21.4.0",
+  "pathMappings": {},
+  "nxJsonPlugins": [
+    {
+      "name": "@nx/js/typescript",
+      "options": {
+        "typecheck": {
+          "targetName": "typecheck"
+        },
+        "build": {
+          "targetName": "build",
+          "configName": "tsconfig.lib.json",
+          "buildDepsName": "build-deps",
+          "watchDepsName": "watch-deps"
+        }
+      }
+    },
+    {
+      "name": "@nx/js/typescript",
+      "options": {
+        "typecheck": {
+          "targetName": "typecheck"
+        }
+      }
+    },
+    {
+      "name": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
+    },
+    {
+      "name": "@nx/jest/plugin",
+      "options": {
+        "targetName": "test"
+      }
+    }
+  ],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": "jest.preset.js",
+        "hash": "13737983450217408137"
+      },
+      {
+        "file": "packages/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "17150870850874320052"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "3547150552012087193"
+      },
+      {
+        "file": "eslint.config.mjs",
+        "hash": "7952676282655520759"
+      },
+      {
+        "file": "README.md",
+        "hash": "9379520677668060047"
+      },
+      {
+        "file": "package.json",
+        "hash": "12132690042948763516"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "8900268571896142108"
+      },
+      {
+        "file": "jest.config.ts",
+        "hash": "14236175072743533737"
+      },
+      {
+        "file": "nx.json",
+        "hash": "93468245091416060"
+      }
+    ],
+    "projectFileMap": {
+      "@shared/utils": [
+        {
+          "file": "packages/@shared/utils/.spec.swcrc",
+          "hash": "18201067170784284381"
+        },
+        {
+          "file": "packages/@shared/utils/README.md",
+          "hash": "3816604565008484386"
+        },
+        {
+          "file": "packages/@shared/utils/eslint.config.mjs",
+          "hash": "9524020043200850849"
+        },
+        {
+          "file": "packages/@shared/utils/jest.config.ts",
+          "hash": "10945770544379008336"
+        },
+        {
+          "file": "packages/@shared/utils/package.json",
+          "hash": "12391666070666657117"
+        },
+        {
+          "file": "packages/@shared/utils/tsconfig.json",
+          "hash": "14186287857387999199"
+        },
+        {
+          "file": "packages/@shared/utils/tsconfig.lib.json",
+          "hash": "2482107884926405878"
+        },
+        {
+          "file": "packages/@shared/utils/tsconfig.spec.json",
+          "hash": "6108658156092555330"
+        }
+      ],
+      "@shared/packets": [
+        {
+          "file": "packages/@shared/packets/.spec.swcrc",
+          "hash": "18201067170784284381"
+        },
+        {
+          "file": "packages/@shared/packets/README.md",
+          "hash": "13064879657573724159"
+        },
+        {
+          "file": "packages/@shared/packets/eslint.config.mjs",
+          "hash": "9524020043200850849"
+        },
+        {
+          "file": "packages/@shared/packets/jest.config.ts",
+          "hash": "11791246687351311620"
+        },
+        {
+          "file": "packages/@shared/packets/package.json",
+          "hash": "15872658503699580827"
+        },
+        {
+          "file": "packages/@shared/packets/src/lib/packet-fields/unsigned-32-bit.packet.ts",
+          "hash": "11437246490744287542"
+        },
+        {
+          "file": "packages/@shared/packets/src/lib/packet-types/server-data-auth.packet.ts",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/@shared/packets/src/lib/packet.interface.ts",
+          "hash": "8472578110989985144"
+        },
+        {
+          "file": "packages/@shared/packets/src/lib/rcon/rcon.interface.ts",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/@shared/packets/tsconfig.json",
+          "hash": "14186287857387999199"
+        },
+        {
+          "file": "packages/@shared/packets/tsconfig.lib.json",
+          "hash": "2482107884926405878"
+        },
+        {
+          "file": "packages/@shared/packets/tsconfig.spec.json",
+          "hash": "6108658156092555330"
+        }
+      ]
+    }
+  }
+}
