@@ -41,16 +41,16 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": "jest.preset.js",
-        "hash": "13737983450217408137"
-      },
-      {
-        "file": "packages/.gitkeep",
-        "hash": "3244421341483603138"
+        "file": "README.md",
+        "hash": "9379520677668060047"
       },
       {
         "file": "tsconfig.json",
         "hash": "17150870850874320052"
+      },
+      {
+        "file": "start-proc.sh",
+        "hash": "3244421341483603138"
       },
       {
         "file": ".gitignore",
@@ -61,12 +61,12 @@
         "hash": "7952676282655520759"
       },
       {
-        "file": "README.md",
-        "hash": "9379520677668060047"
-      },
-      {
         "file": "package.json",
         "hash": "12132690042948763516"
+      },
+      {
+        "file": "packages/.gitkeep",
+        "hash": "3244421341483603138"
       },
       {
         "file": "tsconfig.base.json",
@@ -79,6 +79,14 @@
       {
         "file": "nx.json",
         "hash": "93468245091416060"
+      },
+      {
+        "file": "start-dev.sh",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "jest.preset.js",
+        "hash": "13737983450217408137"
       }
     ],
     "projectFileMap": {
