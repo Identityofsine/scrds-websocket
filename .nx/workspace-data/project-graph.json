@@ -18,16 +18,7 @@
             },
             "cache": true,
             "inputs": [
-              "{projectRoot}/package.json",
-              "{workspaceRoot}/tsconfig.base.json",
-              "{projectRoot}/tsconfig.json",
-              "{projectRoot}/tsconfig.lib.json",
-              "{projectRoot}/tsconfig.spec.json",
-              "{projectRoot}/src/**/*.ts",
-              "{projectRoot}/jest.config.ts",
-              "{projectRoot}/src/**/*.test.ts",
-              "{projectRoot}/src/**/*.spec.ts",
-              "{projectRoot}/src/**/*.d.ts",
+              "production",
               "^production",
               {
                 "externalDependencies": [
@@ -36,11 +27,22 @@
               }
             ],
             "outputs": [
+              "{projectRoot}/**/*.js",
+              "{projectRoot}/**/*.cjs",
+              "{projectRoot}/**/*.mjs",
+              "{projectRoot}/**/*.jsx",
+              "{projectRoot}/**/*.js.map",
+              "{projectRoot}/**/*.jsx.map",
+              "{projectRoot}/**/*.d.ts",
+              "{projectRoot}/**/*.d.cts",
+              "{projectRoot}/**/*.d.mts",
+              "{projectRoot}/**/*.d.ts.map",
+              "{projectRoot}/**/*.d.cts.map",
+              "{projectRoot}/**/*.d.mts.map",
+              "{projectRoot}/tsconfig.tsbuildinfo",
               "{projectRoot}/dist/**/*.d.ts",
-              "{projectRoot}/dist/**/*.d.ts.map",
               "{projectRoot}/dist/tsconfig.lib.tsbuildinfo",
               "{projectRoot}/out-tsc/jest/**/*.d.ts",
-              "{projectRoot}/out-tsc/jest/**/*.d.ts.map",
               "{projectRoot}/out-tsc/jest/tsconfig.tsbuildinfo"
             ],
             "syncGenerators": [
@@ -74,13 +76,7 @@
             },
             "cache": true,
             "inputs": [
-              "{projectRoot}/package.json",
-              "{workspaceRoot}/tsconfig.base.json",
-              "{projectRoot}/tsconfig.lib.json",
-              "{projectRoot}/src/**/*.ts",
-              "!{projectRoot}/jest.config.ts",
-              "!{projectRoot}/src/**/*.spec.ts",
-              "!{projectRoot}/src/**/*.test.ts",
+              "production",
               "^production",
               {
                 "externalDependencies": [
@@ -258,16 +254,7 @@
             },
             "cache": true,
             "inputs": [
-              "{projectRoot}/package.json",
-              "{workspaceRoot}/tsconfig.base.json",
-              "{projectRoot}/tsconfig.json",
-              "{projectRoot}/tsconfig.lib.json",
-              "{projectRoot}/tsconfig.spec.json",
-              "{projectRoot}/src/**/*.ts",
-              "{projectRoot}/jest.config.ts",
-              "{projectRoot}/src/**/*.test.ts",
-              "{projectRoot}/src/**/*.spec.ts",
-              "{projectRoot}/src/**/*.d.ts",
+              "production",
               "^production",
               {
                 "externalDependencies": [
@@ -276,11 +263,22 @@
               }
             ],
             "outputs": [
+              "{projectRoot}/**/*.js",
+              "{projectRoot}/**/*.cjs",
+              "{projectRoot}/**/*.mjs",
+              "{projectRoot}/**/*.jsx",
+              "{projectRoot}/**/*.js.map",
+              "{projectRoot}/**/*.jsx.map",
+              "{projectRoot}/**/*.d.ts",
+              "{projectRoot}/**/*.d.cts",
+              "{projectRoot}/**/*.d.mts",
+              "{projectRoot}/**/*.d.ts.map",
+              "{projectRoot}/**/*.d.cts.map",
+              "{projectRoot}/**/*.d.mts.map",
+              "{projectRoot}/tsconfig.tsbuildinfo",
               "{projectRoot}/dist/**/*.d.ts",
-              "{projectRoot}/dist/**/*.d.ts.map",
               "{projectRoot}/dist/tsconfig.lib.tsbuildinfo",
               "{projectRoot}/out-tsc/jest/**/*.d.ts",
-              "{projectRoot}/out-tsc/jest/**/*.d.ts.map",
               "{projectRoot}/out-tsc/jest/tsconfig.tsbuildinfo"
             ],
             "syncGenerators": [
@@ -314,13 +312,7 @@
             },
             "cache": true,
             "inputs": [
-              "{projectRoot}/package.json",
-              "{workspaceRoot}/tsconfig.base.json",
-              "{projectRoot}/tsconfig.lib.json",
-              "{projectRoot}/src/**/*.ts",
-              "!{projectRoot}/jest.config.ts",
-              "!{projectRoot}/src/**/*.spec.ts",
-              "!{projectRoot}/src/**/*.test.ts",
+              "production",
               "^production",
               {
                 "externalDependencies": [
@@ -497,11 +489,7 @@
             },
             "cache": true,
             "inputs": [
-              "{projectRoot}/package.json",
-              "{workspaceRoot}/tsconfig.base.json",
-              "{projectRoot}/tsconfig.json",
-              "{projectRoot}/tsconfig.app.json",
-              "{projectRoot}/src/**/*.ts",
+              "production",
               "^production",
               {
                 "externalDependencies": [
@@ -510,8 +498,20 @@
               }
             ],
             "outputs": [
+              "{projectRoot}/**/*.js",
+              "{projectRoot}/**/*.cjs",
+              "{projectRoot}/**/*.mjs",
+              "{projectRoot}/**/*.jsx",
+              "{projectRoot}/**/*.js.map",
+              "{projectRoot}/**/*.jsx.map",
+              "{projectRoot}/**/*.d.ts",
+              "{projectRoot}/**/*.d.cts",
+              "{projectRoot}/**/*.d.mts",
+              "{projectRoot}/**/*.d.ts.map",
+              "{projectRoot}/**/*.d.cts.map",
+              "{projectRoot}/**/*.d.mts.map",
+              "{projectRoot}/tsconfig.tsbuildinfo",
               "{projectRoot}/dist/**/*.d.ts",
-              "{projectRoot}/dist/**/*.d.ts.map",
               "{projectRoot}/dist/tsconfig.app.tsbuildinfo"
             ],
             "syncGenerators": [
@@ -705,5 +705,5 @@
   },
   "version": "6.0",
   "errors": [],
-  "computedAt": 1755727734083
+  "computedAt": 1755728808722
 }

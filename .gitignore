@@ -9,3 +9,7 @@ test-output
 ./nx
 nx/
 */nx/**
+
+tmp/
+tmp
+tmp/**

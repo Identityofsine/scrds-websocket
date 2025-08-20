@@ -1,8 +1,8 @@
 {
   "run": {
     "command": "nx run app:serve",
-    "startTime": "2025-08-20T22:08:51.180Z",
-    "endTime": "2025-08-20T22:09:01.625Z",
+    "startTime": "2025-08-20T22:26:48.757Z",
+    "endTime": "2025-08-20T22:26:53.075Z",
     "inner": false
   },
   "tasks": [
@@ -10,9 +10,9 @@
       "taskId": "@srcds-socket/app:build:production",
       "target": "build",
       "projectName": "@srcds-socket/app",
-      "hash": "16571344152119255842",
-      "startTime": "2025-08-20T22:08:51.227Z",
-      "endTime": "2025-08-20T22:08:52.498Z",
+      "hash": "1109089260668839513",
+      "startTime": "2025-08-20T22:26:48.761Z",
+      "endTime": "2025-08-20T22:26:49.336Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 0

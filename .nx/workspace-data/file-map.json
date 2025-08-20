@@ -41,8 +41,16 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": "tsconfig.base.json",
-        "hash": "8900268571896142108"
+        "file": ".gitignore",
+        "hash": "13206183644869250310"
+      },
+      {
+        "file": ".vscode/launch.json",
+        "hash": "3765844303971834888"
+      },
+      {
+        "file": "README.md",
+        "hash": "9379520677668060047"
       },
       {
         "file": "eslint.config.mjs",
@@ -53,51 +61,81 @@
         "hash": "14236175072743533737"
       },
       {
-        "file": "packages/.gitkeep",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": ".gitignore",
-        "hash": "10987594754573603696"
-      },
-      {
         "file": "jest.preset.js",
         "hash": "13737983450217408137"
-      },
-      {
-        "file": "package.json",
-        "hash": "6633152641919463871"
-      },
-      {
-        "file": "README.md",
-        "hash": "9379520677668060047"
-      },
-      {
-        "file": ".vscode/launch.json",
-        "hash": "3765844303971834888"
-      },
-      {
-        "file": "tmp/@srcds-socket/app/main-with-require-overrides.js",
-        "hash": "9313131830276981861"
-      },
-      {
-        "file": "start-dev.sh",
-        "hash": "3244421341483603138"
       },
       {
         "file": "nx.json",
         "hash": "365161404030073447"
       },
       {
-        "file": "tsconfig.json",
-        "hash": "4658777725400773458"
+        "file": "package.json",
+        "hash": "6633152641919463871"
+      },
+      {
+        "file": "packages/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "start-dev.sh",
+        "hash": "10561814974359519073"
       },
       {
         "file": "start-proc.sh",
         "hash": "3244421341483603138"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "8900268571896142108"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "4658777725400773458"
       }
     ],
     "projectFileMap": {
+      "@shared/utils": [
+        {
+          "file": "packages/@shared/utils/.spec.swcrc",
+          "hash": "18201067170784284381"
+        },
+        {
+          "file": "packages/@shared/utils/README.md",
+          "hash": "3816604565008484386"
+        },
+        {
+          "file": "packages/@shared/utils/eslint.config.mjs",
+          "hash": "9524020043200850849"
+        },
+        {
+          "file": "packages/@shared/utils/jest.config.ts",
+          "hash": "10945770544379008336"
+        },
+        {
+          "file": "packages/@shared/utils/package.json",
+          "hash": "12391666070666657117"
+        },
+        {
+          "file": "packages/@shared/utils/src/index.ts",
+          "hash": "15624778943581133057"
+        },
+        {
+          "file": "packages/@shared/utils/src/lib/arraybuffer/map.util.ts",
+          "hash": "6820668898362710658"
+        },
+        {
+          "file": "packages/@shared/utils/tsconfig.json",
+          "hash": "14186287857387999199"
+        },
+        {
+          "file": "packages/@shared/utils/tsconfig.lib.json",
+          "hash": "2482107884926405878"
+        },
+        {
+          "file": "packages/@shared/utils/tsconfig.spec.json",
+          "hash": "6108658156092555330"
+        }
+      ],
       "@shared/packets": [
         {
           "file": "packages/@shared/packets/.spec.swcrc",
@@ -156,72 +194,10 @@
           "hash": "6108658156092555330"
         }
       ],
-      "@shared/utils": [
-        {
-          "file": "packages/@shared/utils/.spec.swcrc",
-          "hash": "18201067170784284381"
-        },
-        {
-          "file": "packages/@shared/utils/README.md",
-          "hash": "3816604565008484386"
-        },
-        {
-          "file": "packages/@shared/utils/eslint.config.mjs",
-          "hash": "9524020043200850849"
-        },
-        {
-          "file": "packages/@shared/utils/jest.config.ts",
-          "hash": "10945770544379008336"
-        },
-        {
-          "file": "packages/@shared/utils/package.json",
-          "hash": "12391666070666657117"
-        },
-        {
-          "file": "packages/@shared/utils/src/index.ts",
-          "hash": "15624778943581133057"
-        },
-        {
-          "file": "packages/@shared/utils/src/lib/arraybuffer/map.util.ts",
-          "hash": "6820668898362710658"
-        },
-        {
-          "file": "packages/@shared/utils/tsconfig.json",
-          "hash": "14186287857387999199"
-        },
-        {
-          "file": "packages/@shared/utils/tsconfig.lib.json",
-          "hash": "2482107884926405878"
-        },
-        {
-          "file": "packages/@shared/utils/tsconfig.spec.json",
-          "hash": "6108658156092555330"
-        }
-      ],
       "@srcds-socket/app": [
         {
-          "file": "app/dist/app/src/main.d.ts",
-          "hash": "10418610560732189788"
-        },
-        {
-          "file": "app/dist/app/src/main.d.ts.map",
-          "hash": "9816582811609989897"
-        },
-        {
-          "file": "app/dist/app/src/main.js",
-          "hash": "8507187498885962948"
-        },
-        {
-          "file": "app/dist/app/src/main.js.map",
-          "hash": "6113679189639513064"
-        },
-        {
-          "file": "app/dist/main.js",
-          "hash": "2085563549108457036"
-        },
-        {
-          "file": "app/dist/main.js.map",
-          "hash": "1170352384182404162"
+          "file": "app/.gitignore",
+          "hash": "1114545368619114609"
         },
         {
           "file": "app/package.json",
@@ -233,7 +209,7 @@
         },
         {
           "file": "app/src/main.ts",
-          "hash": "12913629557067508320"
+          "hash": "3244421341483603138"
         },
         {
           "file": "app/tsconfig.app.json",

@@ -250,5 +250,47 @@
         }
       }
     }
+  },
+  "12653093720765507334": {},
+  "7771445682190487105": {
+    "app": {
+      "targets": {
+        "lint": {
+          "command": "eslint .",
+          "cache": true,
+          "options": {
+            "cwd": "app"
+          },
+          "inputs": [
+            "default",
+            "^default",
+            "{workspaceRoot}/eslint.config.mjs",
+            "{workspaceRoot}/tools/eslint-rules/**/*",
+            {
+              "externalDependencies": [
+                "eslint"
+              ]
+            }
+          ],
+          "outputs": [
+            "{options.outputFile}"
+          ],
+          "metadata": {
+            "technologies": [
+              "eslint"
+            ],
+            "description": "Runs ESLint on project",
+            "help": {
+              "command": "npx eslint --help",
+              "example": {
+                "options": {
+                  "max-warnings": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
