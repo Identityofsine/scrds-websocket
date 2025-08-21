@@ -1,109 +1,248 @@
-# SrcdsSocket
+# SRCDS WebSocket
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+A TypeScript monorepo for Source Dedicated Server (SRCDS) WebSocket communication using Nx workspace.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+## 🚀 Quick Start
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/js?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+### Development Environment
 
-## Generate a library
+```bash
+# Start development with hot reloading
+./start-dev.sh
 
-```sh
-npx nx g @nx/js:lib packages/pkg1 --publishable --importPath=@my-org/pkg1
+# Or manually
+nx run app:serve:development --watch --verbose
 ```
 
-## Run tasks
+This will:
+- Build all shared libraries (`@shared/packets`, `@shared/utils`)
+- Start the main application with hot reloading
+- Watch for changes in shared libraries and rebuild automatically
 
-To build the library use:
-
-```sh
-npx nx build pkg1
-```
-
-To run any task with Nx use:
-
-```sh
-npx nx <target> <project-name>
-```
-
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
-
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Versioning and releasing
-
-To version and release the library use
+### Project Structure
 
 ```
-npx nx release
+srcds-websocket/
+├── app/                           # Main application
+│   ├── src/main.ts               # Application entry point
+│   └── package.json              # App dependencies
+├── packages/@shared/             # Shared libraries
+│   ├── packets/                  # Packet handling library
+│   │   ├── src/
+│   │   ├── project.json         # Nx build configuration
+│   │   └── package.json
+│   └── utils/                   # Utility functions library
+│       ├── src/
+│       ├── project.json         # Nx build configuration
+│       └── package.json
+├── tools/generators/            # Custom Nx generators
+└── start-dev.sh                # Development script
 ```
 
-Pass `--dry-run` to see what would happen without actually releasing the library.
+## 📦 Creating Shared Libraries
 
-[Learn more about Nx release &raquo;](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Using the Custom Generator (Recommended)
 
-## Keep TypeScript project references up to date
+We've created a custom Nx generator that automatically sets up shared libraries with proper configuration:
 
-Nx automatically updates TypeScript [project references](https://www.typescriptlang.org/docs/handbook/project-references.html) in `tsconfig.json` files to ensure they remain accurate based on your project dependencies (`import` or `require` statements). This sync is automatically done when running tasks such as `build` or `typecheck`, which require updated references to function correctly.
+```bash
+# Create a new shared library
+nx generate @srcds-socket/source:shared-lib <library-name>
 
-To manually trigger the process to sync the project graph dependencies information to the TypeScript project references, run the following command:
+# Example: Create a networking library
+nx generate @srcds-socket/source:shared-lib networking
 
-```sh
-npx nx sync
+# Interactive mode (will prompt for library name)
+nx generate @srcds-socket/source:shared-lib
 ```
 
-You can enforce that the TypeScript project references are always in the correct state when running in CI by adding a step to your CI job configuration that runs the following command:
+**What the generator does automatically:**
 
-```sh
-npx nx sync:check
+✅ Creates `project.json` with proper build targets  
+✅ Configures TypeScript compilation settings  
+✅ Sets up package.json with correct paths  
+✅ Adds TypeScript as devDependency  
+✅ Links the library to the main app  
+✅ Ensures proper workspace configuration  
+
+### Manual Setup (Not Recommended)
+
+If you need to manually create a shared library:
+
+1. **Create the library structure:**
+   ```bash
+   mkdir -p packages/@shared/your-lib/src
+   ```
+
+2. **Create `project.json`:**
+   ```json
+   {
+     "name": "@shared/your-lib",
+     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+     "sourceRoot": "packages/@shared/your-lib/src",
+     "projectType": "library",
+     "targets": {
+       "build": {
+         "executor": "@nx/js:tsc",
+         "outputs": ["{options.outputPath}"],
+         "options": {
+           "outputPath": "dist/packages/@shared/your-lib",
+           "main": "packages/@shared/your-lib/src/index.ts",
+           "tsConfig": "packages/@shared/your-lib/tsconfig.lib.json"
+         }
+       }
+     }
+   }
+   ```
+
+3. **Update app dependencies:**
+   ```json
+   // app/package.json
+   {
+     "devDependencies": {
+       "@shared/your-lib": "*"
+     }
+   }
+   ```
+
+## 🔧 Technical Notes
+
+### TypeScript External Dependency Fix
+
+We solved the common Nx issue: `The externalDependency 'typescript' for '@shared/packages:build' could not be found`
+
+**Solution:** Explicit `project.json` configuration instead of relying on Nx inferred targets.
+
+### Workspace Configuration
+
+```json
+// package.json
+{
+  "workspaces": [
+    "app", 
+    "packages/*/*"
+  ]
+}
 ```
 
-[Learn more about nx sync](https://nx.dev/reference/nx-commands#sync)
+This pattern properly recognizes the `@shared/*` namespace libraries.
 
-## Set up CI!
+### Hot Reloading
 
-### Step 1
+The development environment supports hot reloading for:
+- Main application code changes
+- Shared library changes (automatically rebuilds dependencies)
+- TypeScript compilation errors are shown in real-time
 
-To connect to Nx Cloud, run the following command:
+## 🛠 Available Scripts
 
-```sh
-npx nx connect
+```bash
+# Development
+./start-dev.sh                    # Start with hot reloading
+nx serve app                      # Basic serve
+nx serve app:development          # Development mode
+
+# Building
+nx build app                      # Build main app
+nx build @shared/packets          # Build specific library
+nx run-many --target=build        # Build all projects
+
+# Testing & Linting
+nx test @shared/packets           # Run tests
+nx lint @shared/packets           # Run linter
+nx run-many --target=test         # Test all projects
+
+# Utilities
+nx reset                          # Clear Nx cache
+nx graph                          # Show dependency graph
 ```
 
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
+## 📚 Library Usage Examples
 
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Importing Shared Libraries
 
-### Step 2
+```typescript
+// app/src/main.ts
+import { BasePacket } from '@shared/packets';
+import { mapArrayBuffer } from '@shared/utils';
 
-Use the following command to configure a CI workflow for your workspace:
-
-```sh
-npx nx g ci-workflow
+const packet = new BasePacket();
+const bytes = packet.toBytes();
+console.log(bytes);
 ```
 
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Creating Packet Fields
 
-## Install Nx Console
+```typescript
+// Example: Using the packet field system
+import { Unsigned32BitPacketField } from '@shared/packets';
 
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+const field = new Unsigned32BitPacketField(42);
+const bytes = field.toBytes(); // ArrayBuffer representation
+```
 
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## 🏗 Architecture
 
-## Useful links
+### Dependency Flow
 
-Learn more:
+```
+app
+├── @shared/packets
+│   └── @shared/utils (if needed)
+└── @shared/utils
+```
 
-- [Learn more about this workspace setup](https://nx.dev/nx-api/js?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Build Process
 
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+1. **Shared libraries build first** (`@shared/packets`, `@shared/utils`)
+2. **App builds** with compiled library references
+3. **Hot reloading** rebuilds only changed libraries + app
+
+## 🚨 Troubleshooting
+
+### Common Issues
+
+**"External dependency 'typescript' could not be found"**
+- Ensure each shared library has a `project.json` file
+- Use our generator: `nx generate @srcds-socket/source:shared-lib`
+
+**Hot reloading not working for libraries**
+- Check that `runBuildTargetDependencies: true` in app's serve target
+- Ensure proper `dependsOn: ["^build"]` in app's build target
+
+**Import errors**
+- Verify workspace configuration in root `package.json`
+- Check that shared library is listed in app's `devDependencies`
+- Run `npm install` after adding new libraries
+
+### Reset Everything
+
+```bash
+rm -rf node_modules package-lock.json dist .nx
+npm install
+nx reset
+```
+
+## 🤝 Contributing
+
+1. Use the generator for new shared libraries
+2. Follow the existing project structure
+3. Ensure hot reloading works after changes
+4. Test both development and production builds
+
+---
+
+## Generator Schema Reference
+
+The custom `shared-lib` generator accepts these options:
+
+| Option | Type | Description | Default |
+|--------|------|-------------|---------|
+| `name` | string | Library name (e.g., 'networking') | Required |
+| `directory` | string | Directory where library is placed | `packages/@shared` |
+| `skipFormat` | boolean | Skip formatting files | `false` |
+
+**Example:**
+```bash
+nx generate @srcds-socket/source:shared-lib networking --directory=packages/@shared
+```

@@ -1,0 +1,48 @@
+# <%= projectName %>
+
+A shared library for the SRCDS WebSocket application.
+
+## Installation
+
+This library is automatically linked via the workspace configuration. It's available as `<%= projectName %>` in the workspace.
+
+## Usage
+
+```typescript
+import { <%= names.className %> } from '<%= projectName %>';
+
+const <%= names.propertyName %> = new <%= names.className %>();
+console.log(<%= names.propertyName %>.hello());
+```
+
+## API
+
+### <%= names.className %>
+
+The main class for this shared library.
+
+#### Methods
+
+- `hello()`: Example method that returns a greeting message
+
+## Development
+
+This library is part of the SRCDS WebSocket monorepo and follows the shared library pattern with proper project.json configuration to avoid TypeScript external dependency issues.
+
+### Building
+
+```bash
+nx build <%= projectName %>
+```
+
+### Testing
+
+```bash
+nx test <%= projectName %>
+```
+
+### Linting
+
+```bash
+nx lint <%= projectName %>
+``` 

@@ -103,6 +103,7 @@
   "dependencies": {},
   "devDependencies": {
     "@shared/packets": "*",
-    "@shared/utils": "*"
+    "@shared/utils": "*",
+    "@shared/networking": "*"
   }
 }

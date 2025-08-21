@@ -11,6 +11,9 @@
     },
     {
       "path": "./app"
+    },
+    {
+      "path": "./tools/shared-lib-plugin"
     }
   ]
 }

@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "shared-lib": {
+      "factory": "./dist/generators/shared-lib",
+      "schema": "./dist/generators/schema.json",
+      "description": "shared-lib generator"
+    }
+  }
+}

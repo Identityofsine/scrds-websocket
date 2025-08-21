@@ -1,5 +1,5 @@
 {
   "extends": "./schema.json",
-  "implementation": "./index.ts",
+  "implementation": "./generator.ts",
   "description": "Generate a shared library with proper project.json configuration to fix Nx TypeScript external dependency issues"
 } 

@@ -1,0 +1,18 @@
+import { <%= names.className %> } from './<%= fileName %>';
+
+describe('<%= names.className %>', () => {
+  let <%= names.propertyName %>: <%= names.className %>;
+
+  beforeEach(() => {
+    <%= names.propertyName %> = new <%= names.className %>();
+  });
+
+  it('should be created', () => {
+    expect(<%= names.propertyName %>).toBeTruthy();
+  });
+
+  it('should return a greeting message', () => {
+    const result = <%= names.propertyName %>.hello();
+    expect(result).toBe('Hello from <%= projectName %>!');
+  });
+}); 

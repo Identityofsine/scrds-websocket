@@ -8,17 +8,17 @@ export type Constructor<T, R extends T = T> = new (...args: any[]) => R;
 
 export abstract class AbstractPacketField {
 
-  public readonly packetType: PacketDataType = 'uint32';
-  public readonly packetOrder: PacketDataOrder = 'little-endian'
-  public readonly packetSize: number = 0;
-  //@ts-expect-error - This is a workaround to allow the constructor to be used in the map function
-  private readonly _constructor: Constructor<AbstractPacketField> = AbstractPacketField;
+  public readonly packetType: PacketDataType;
+  public readonly packetOrder: PacketDataOrder;
+  public readonly packetSize: number;
+  protected value: number | string;
+  private readonly _constructor: Constructor<AbstractPacketField>;
 
   constructor(
     packetType: PacketDataType,
     packetOrder: PacketDataOrder,
     packetSize: number,
-    protected value: number | string = 0,
+    value: number | string = 0,
     _constructor: Constructor<AbstractPacketField>
   ) {
     this.packetType = packetType;
@@ -50,4 +50,8 @@ export abstract class AbstractPacketField {
   public abstract toBytes(): ArrayBuffer;
 
   public abstract fromBytes<T extends AbstractPacketField>(bytes: ArrayBuffer): T;
+
+  public static isPacketType<T extends AbstractPacketField>(value: unknown): value is T {
+    return value instanceof AbstractPacketField && 'packetType' in value && 'packetOrder' in value && 'packetSize' in value;
+  }
 }

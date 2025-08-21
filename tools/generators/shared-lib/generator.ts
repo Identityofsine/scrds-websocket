@@ -1,20 +1,17 @@
 import {
   Tree,
   formatFiles,
-  generateFiles,
   names,
-  offsetFromRoot,
-  readProjectConfiguration,
-  updateProjectConfiguration,
   readJson,
   writeJson,
 } from '@nx/devkit';
-import * as path from 'path';
+import { SharedLibGeneratorSchema } from './schema';
 
-interface SharedLibGeneratorSchema {
-  name: string;
-  directory?: string;
-  skipFormat?: boolean;
+interface NormalizedSchema extends SharedLibGeneratorSchema {
+  projectName: string;
+  projectRoot: string;
+  projectDirectory: string;
+  parsedTags: string[];
 }
 
 export default async function (tree: Tree, options: SharedLibGeneratorSchema) {
@@ -41,13 +38,6 @@ function normalizeOptions(tree: Tree, options: SharedLibGeneratorSchema): Normal
     projectDirectory,
     parsedTags: [],
   };
-}
-
-interface NormalizedSchema extends SharedLibGeneratorSchema {
-  projectName: string;
-  projectRoot: string;
-  projectDirectory: string;
-  parsedTags: string[];
 }
 
 function addProjectJson(tree: Tree, options: NormalizedSchema) {

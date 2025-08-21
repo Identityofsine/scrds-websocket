@@ -81,11 +81,16 @@
         "production",
         "^production"
       ]
-    }
-  },
-  "generators": {
-    "@srcds-socket/source:shared-lib": {
-      "schema": "./tools/generators/shared-lib/schema.json"
+    },
+    "@nx/js:tsc": {
+      "cache": true,
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
     }
   }
 }

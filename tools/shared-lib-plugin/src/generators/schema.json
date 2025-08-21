@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "$id": "SharedLib",
+  "title": "Create a shared library with proper project.json configuration",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Library name (e.g., 'networking', 'auth')",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name would you like to use for the library?",
+      "pattern": "^[a-zA-Z].*$"
+    },
+    "directory": {
+      "type": "string",
+      "description": "A directory where the library is placed",
+      "default": "packages/@shared",
+      "x-prompt": {
+        "message": "Which directory should the library be created in?",
+        "type": "list",
+        "items": [
+          {
+            "value": "packages/@shared",
+            "label": "@shared (shared utilities and common code)"
+          },
+          {
+            "value": "packages/@core",
+            "label": "@core (core business logic)"
+          },
+          {
+            "value": "packages/@utils",
+            "label": "@utils (utility libraries)"
+          },
+          {
+            "value": "packages/@modules",
+            "label": "@modules (feature modules)"
+          },
+          {
+            "value": "libs",
+            "label": "libs (standard Nx library structure)"
+          }
+        ]
+      }
+    },
+    "namespace": {
+      "type": "string",
+      "description": "The npm namespace for the library (e.g., '@shared', '@core', '@utils')",
+      "x-prompt": "What namespace should the library use? (leave empty for none)"
+    },
+    "skipFormat": {
+      "type": "boolean",
+      "description": "Skip formatting files",
+      "default": false
+    }
+  },
+  "required": ["name"]
+}

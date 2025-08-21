@@ -1,0 +1,19 @@
+{
+  "$schema": "../../node_modules/@nx/devkit/collection-schema.json",
+  "name": "srcds-websocket-generators",
+  "version": "0.0.1",
+  "schematics": {
+    "shared-lib": {
+      "factory": "./shared-lib/generator",
+      "schema": "./shared-lib/schema.json",
+      "description": "Generate a shared library with proper project.json configuration to fix Nx TypeScript external dependency issues"
+    }
+  },
+  "generators": {
+    "shared-lib": {
+      "factory": "./shared-lib/generator",
+      "schema": "./shared-lib/schema.json",
+      "description": "Generate a shared library with proper project.json configuration to fix Nx TypeScript external dependency issues"
+    }
+  }
+} 
