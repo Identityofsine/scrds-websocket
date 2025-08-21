@@ -104,6 +104,7 @@
   "devDependencies": {
     "@shared/packets": "*",
     "@shared/utils": "*",
-    "@shared/networking": "*"
+    "@shared/networking": "*",
+    "@modules/rcon": "*"
   }
 }

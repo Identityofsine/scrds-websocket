@@ -21,6 +21,9 @@
     },
     {
       "path": "../packages/@shared/networking/tsconfig.lib.json"
+    },
+    {
+      "path": "../packages/@modules/rcon/tsconfig.lib.json"
     }
   ]
 }
