@@ -1,6 +1,7 @@
 import {
   formatFiles,
   generateFiles,
+  installPackagesTask,
   names,
   readJson,
   Tree,
@@ -25,10 +26,16 @@ export async function sharedLibGenerator(tree: Tree, options: SharedLibGenerator
   addSourceFiles(tree, normalizedOptions);
   addTsConfig(tree, normalizedOptions);
   addToAppDependencies(tree, normalizedOptions);
+  addToAppTsConfigReferences(tree, normalizedOptions);
   
   if (!options.skipFormat) {
     await formatFiles(tree);
   }
+
+  // Return a task to install packages after file generation is complete
+  return () => {
+    installPackagesTask(tree);
+  };
 }
 
 function normalizeOptions(options: SharedLibGeneratorSchema): NormalizedSchema {
@@ -109,10 +116,20 @@ function addPackageJson(tree: Tree, options: NormalizedSchema) {
   const packageJson = {
     name: options.projectName,
     version: '0.0.1',
-    type: 'commonjs',
+    private: true,
+    type: 'module',
     main: './src/index.js',
     module: './src/index.js',
     types: './src/index.d.ts',
+    exports: {
+      './package.json': './package.json',
+      '.': {
+        development: './src/index.ts',
+        types: './dist/index.d.ts',
+        import: './dist/index.js',
+        default: './dist/index.js',
+      },
+    },
     dependencies: {
       tslib: '^2.3.0',
     },
@@ -142,33 +159,64 @@ function addSourceFiles(tree: Tree, options: NormalizedSchema) {
 }
 
 function addTsConfig(tree: Tree, options: NormalizedSchema) {
+  // tsconfig.lib.json - copy from existing working packages
   const tsConfigLib = {
     extends: '../../../tsconfig.base.json',
     compilerOptions: {
-      module: 'commonjs',
-      outDir: '../../../dist/out-tsc',
-      declaration: true,
+      baseUrl: '.',
+      rootDir: 'src',
+      outDir: 'dist',
+      tsBuildInfoFile: 'dist/tsconfig.lib.tsbuildinfo',
+      emitDeclarationOnly: false,
+      forceConsistentCasingInFileNames: true,
       types: ['node'],
     },
+    include: ['src/**/*.ts'],
+    references: [],
     exclude: [
       'jest.config.ts',
       'src/**/*.spec.ts',
       'src/**/*.test.ts',
     ],
-    include: ['src/**/*.ts'],
   };
 
   writeJson(tree, `${options.projectRoot}/tsconfig.lib.json`, tsConfigLib);
 
-  const tsConfig = {
-    extends: './tsconfig.lib.json',
+  // tsconfig.spec.json - copy from existing working packages
+  const tsConfigSpec = {
+    extends: '../../../tsconfig.base.json',
     compilerOptions: {
+      outDir: './out-tsc/jest',
       types: ['jest', 'node'],
+      forceConsistentCasingInFileNames: true,
     },
     include: [
       'jest.config.ts',
       'src/**/*.test.ts',
       'src/**/*.spec.ts',
+      'src/**/*.d.ts',
+    ],
+    references: [
+      {
+        path: './tsconfig.lib.json',
+      },
+    ],
+  };
+
+  writeJson(tree, `${options.projectRoot}/tsconfig.spec.json`, tsConfigSpec);
+
+  // tsconfig.json - copy from existing working packages
+  const tsConfig = {
+    extends: '../../../tsconfig.base.json',
+    files: [],
+    include: [],
+    references: [
+      {
+        path: './tsconfig.lib.json',
+      },
+      {
+        path: './tsconfig.spec.json',
+      },
     ],
   };
 
@@ -188,6 +236,32 @@ function addToAppDependencies(tree: Tree, options: NormalizedSchema) {
     appPackageJson.devDependencies[options.projectName] = '*';
     
     writeJson(tree, appPackageJsonPath, appPackageJson);
+  }
+}
+
+function addToAppTsConfigReferences(tree: Tree, options: NormalizedSchema) {
+  const appTsConfigPath = 'app/tsconfig.app.json';
+  
+  if (tree.exists(appTsConfigPath)) {
+    const appTsConfig = readJson(tree, appTsConfigPath);
+    
+    if (!appTsConfig.references) {
+      appTsConfig.references = [];
+    }
+    
+    const newReference = {
+      path: `../${options.projectRoot}/tsconfig.lib.json`
+    };
+    
+    // Check if reference already exists
+    const existingRef = appTsConfig.references.find((ref: any) => 
+      ref.path === newReference.path
+    );
+    
+    if (!existingRef) {
+      appTsConfig.references.push(newReference);
+      writeJson(tree, appTsConfigPath, appTsConfig);
+    }
   }
 }
 

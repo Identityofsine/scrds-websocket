@@ -1,79 +1,46 @@
+import { BehaviorSubject, catchError, of, skipWhile } from "rxjs";
+import { TCPSocket } from "@shared/networking";
+import { Socket } from "net";
 import { ServerDataAuthPacket, ServerDataExecCommandPacket } from "@shared/packets";
-import * as net from "net";
-import { BehaviorSubject, catchError, of } from "rxjs";
 
-const bytes = new ServerDataAuthPacket("mimi").toBytes();
-// print out all of the bytes in the array
-const byteArray = new Uint8Array(bytes);
-console.log("Packet Bytes:", byteArray);
-
-const connectionObservable = new BehaviorSubject<{ data: any, client?: net.Socket } | null>({
-  data: null,
+TCPSocket.Instance.setConfig({
+  host: '10.2.2.2',
+  port: 27015
 });
 
-// simple tcp socket client
-const client = new net.Socket();
-client.connect(
-  {
-    host: "10.2.2.2",
-    port: 27015,
-  },
-  () => connectionObservable.next({
-    data: "Connected to server",
-    client,
-  })
-);
-client.on("connect", () => {
-  client.write(byteArray, (err) => {
-    if (err) {
-      connectionObservable.next({
-        data: err,
-        client,
-      });
-    }
-  });
-});
+const tcp = TCPSocket.Instance;
+const obs = tcp.asObservable()
 
-client.on("data", (data) => {
-  console.log("Data received from server:", data);
-  connectionObservable.next({
-    data: data.buffer,
-    client,
-  });
-});
+const connectObserver = obs.pipe(skipWhile((response) => response.event !== 'connect'))
+const dataObserver = obs.pipe(skipWhile((response) => response.event !== 'data'))
+const errorObserver = obs.pipe(skipWhile((response) => response.event !== 'error'))
+const closeObserver = obs.pipe(skipWhile((response) => response.event !== 'close'))
 
-client.on("error", (err) => {
-  connectionObservable.error(err);
-});
+connectObserver.subscribe(({ client, data, event }) => {
+  if (event !== 'connect') return;
+  if (!client) {
+    console.error('No client connected');
+    return;
+  }
+  sendAuthentication(client);
+})
 
-client.on("close", () => {
-  connectionObservable.complete();
-});
+dataObserver.subscribe((response) => {
+  console.log('Data received:', response.data);
+  tcp.send(new ServerDataExecCommandPacket('echo "Hello, World!"').toBytes());
+})
 
-connectionObservable
-  .asObservable()
-  .pipe(
-    catchError((err) => {
-      console.error("Error in observable:", err);
-      return of(err); // Return an observable with the error
-    })
-  )
-  .subscribe(({ client, data }: {
-    client: net.Socket,
-    data: ArrayBuffer | Error
-  }) => {
-    if (data instanceof Error) {
-      console.error("Error response:", data);
-      return;
-    }
-    console.log("Response received:", new Uint8Array(data));
+errorObserver.subscribe((response) => {
+  console.error('Error:', response.error);
+})
 
+closeObserver.subscribe(() => {
+  console.log('Connection closed');
+})
 
-    const cmdPacket = new ServerDataExecCommandPacket("status");
-    const bytes = cmdPacket.toBytes();
-    const uint8Array = new Uint8Array(bytes);
-    client?.write(uint8Array, (err) => {
-      console.log("Command sent to server:", cmdPacket);
-    });
+function sendAuthentication(client: Socket) {
 
-  });
+  const authPacket = new ServerDataAuthPacket('mimi');
+  tcp.send(authPacket.toBytes());
+
+}

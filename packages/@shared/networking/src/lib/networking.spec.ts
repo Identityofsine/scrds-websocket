@@ -1,10 +1,10 @@
-import { Networking } from './networking';
+import { TCPSocket } from './networking';
 
-describe('Networking', () => {
-  let networking: Networking;
+describe('TCPSocket', () => {
+  let networking: TCPSocket;
 
   beforeEach(() => {
-    networking = new Networking();
+    networking = TCPSocket.Instance;
   });
 
   it('should be created', () => {

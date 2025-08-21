@@ -46,24 +46,49 @@ srcds-websocket/
 We've created a custom Nx generator that automatically sets up shared libraries with proper configuration:
 
 ```bash
-# Create a new shared library
-nx generate @srcds-socket/source:shared-lib <library-name>
+# Create a shared utility library (default)
+nx generate @srcds-socket/shared-lib-plugin:shared-lib networking
 
-# Example: Create a networking library
-nx generate @srcds-socket/source:shared-lib networking
+# Create a core business logic library  
+nx generate @srcds-socket/shared-lib-plugin:shared-lib auth --directory=packages/@core --namespace=@core
 
-# Interactive mode (will prompt for library name)
-nx generate @srcds-socket/source:shared-lib
+# Create a utility library
+nx generate @srcds-socket/shared-lib-plugin:shared-lib validation --directory=packages/@utils --namespace=@utils
+
+# Create a standard Nx library (no namespace)
+nx generate @srcds-socket/shared-lib-plugin:shared-lib components --directory=libs --namespace=""
+
+# Interactive mode (will prompt for options)
+nx generate @srcds-socket/shared-lib-plugin:shared-lib
 ```
+
+#### Generator Options
+
+| Option | Description | Default | Example Values |
+|--------|-------------|---------|----------------|
+| `name` | Library name | (required) | `networking`, `auth`, `validation` |
+| `directory` | Directory structure | `packages/@shared` | `packages/@core`, `packages/@utils`, `libs` |
+| `namespace` | NPM namespace | Auto-detected from directory | `@core`, `@utils`, `@shared`, or empty string |
+| `skipFormat` | Skip file formatting | `false` | `true`, `false` |
+
+#### Available Directory/Namespace Combinations
+
+- **`packages/@shared`** → `@shared/library-name` - Shared utilities and common code  
+- **`packages/@core`** → `@core/library-name` - Core business logic  
+- **`packages/@utils`** → `@utils/library-name` - Utility libraries  
+- **`packages/@modules`** → `@modules/library-name` - Feature modules  
+- **`libs`** → `library-name` - Standard Nx library structure (no namespace)
 
 **What the generator does automatically:**
 
-✅ Creates `project.json` with proper build targets  
+✅ Creates `project.json` with proper build targets to fix TypeScript external dependency issues  
 ✅ Configures TypeScript compilation settings  
-✅ Sets up package.json with correct paths  
+✅ Sets up package.json with correct entry points and dependencies  
 ✅ Adds TypeScript as devDependency  
-✅ Links the library to the main app  
-✅ Ensures proper workspace configuration  
+✅ Links the library to the main app dependencies  
+✅ Creates proper workspace configuration  
+✅ Generates implementation templates with tests  
+✅ Sets up Jest configuration for testing  
 
 ### Manual Setup (Not Recommended)
 

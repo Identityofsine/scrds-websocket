@@ -39,4 +39,9 @@ export class AbstractPacket {
 
   }
 
+  public toUnsigned8BitBytes(): Uint8Array {
+    const bytes = this.toBytes();
+    return new Uint8Array(bytes);
+  }
+
 }

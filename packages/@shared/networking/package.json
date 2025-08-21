@@ -1,10 +1,20 @@
 {
   "name": "@shared/networking",
   "version": "0.0.1",
-  "type": "commonjs",
+  "private": true,
+  "type": "module",
   "main": "./src/index.js",
   "module": "./src/index.js",
   "types": "./src/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "development": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
   "dependencies": {
     "tslib": "^2.3.0"
   },
